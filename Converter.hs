@@ -87,16 +87,12 @@ getBase :: Prompt -> IO NumberBase
 getBase p = 
     putStrFlush p >>
     getLine >>= \inputBase ->
-    let upperFirst = toUpper <$> first inputBase
-        lowerRest = map toLower <$> rest inputBase
-        base = (:) <$> upperFirst <*> lowerRest >>= readMaybe
+    let base = sanitizer inputBase >>= readMaybe
     in case base of 
         Nothing -> getBase "Invalid base, try again: "
         Just b -> return b
-    where first (x:_) = Just x
-          first _ = Nothing
-          rest (_:xs) = Just xs
-          rest _ = Nothing
+    where sanitizer (x:xs) = Just $ toUpper x : map toLower xs
+          sanitizer _ = Nothing
 
 -- Do the stuff
 main = 

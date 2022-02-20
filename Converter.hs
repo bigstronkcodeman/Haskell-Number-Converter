@@ -24,7 +24,7 @@ isValidNumber s nb = foldl' (\acc d -> acc && (d `elem` validDigs nb)) True s
     where validDigs Binary = "01"
           validDigs Octal = "01234567"
           validDigs Decimal = "0123456789"
-          validDigs Hexadecimal = "0123456789abcdef"
+          validDigs Hexadecimal = "0123456789abcdefABCDEF"
 
 
 -- Given a string, return a Maybe NumberBase depending on whether or not
@@ -77,7 +77,7 @@ getInputNumber :: (Integral a) => Prompt -> IO a
 getInputNumber p =
     putStrFlush p >>
     getLine >>= \num ->
-    case strToDecimal . map toLower $ num of 
+    case strToDecimal num of 
         Nothing -> getInputNumber "Invalid number, try again: "
         Just x -> return x
         

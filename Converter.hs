@@ -64,8 +64,8 @@ numToStr :: (Show a, Integral a) => a -> NumberBase -> String
 numToStr x nb =
     let base = baseNum nb
         divSequence = takeWhile (> 0) $ iterate (`div` base) x
-        divRemPairs = map (\x -> (x, (intToDigit . fromIntegral) $ x `rem` base)) divSequence
-    in dropWhile (== '0') $ foldl (\acc (_,r) -> r : acc) "" divRemPairs
+        remSequence = map (intToDigit . fromIntegral . (`rem` base)) divSequence
+    in dropWhile (== '0') $ foldl (flip (:)) "" remSequence
 
 
 -- Simple helper for printing a string to stdout then flushing

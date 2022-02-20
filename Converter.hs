@@ -9,7 +9,7 @@ type Prompt = String
 data NumberBase = Binary | Octal | Decimal | Hexadecimal
     deriving (Show, Read, Eq, Enum)
 
--- A mapping from number bases to their integer forms
+-- A mapping from number bases to the corresponding integer
 baseNum :: (Integral a) => NumberBase -> a
 baseNum Binary = 2
 baseNum Octal = 8

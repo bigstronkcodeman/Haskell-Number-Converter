@@ -68,7 +68,8 @@ numToStr x nb =
     in dropWhile (== '0') $ foldl (flip (:)) "" remSequence
 
 
--- Simple helper for printing a string to stdout then flushing
+-- Simple helper for printing a string to stdout then flushing the buffer
+-- so that we can get input on the same line as output
 putStrFlush :: String -> IO ()
 putStrFlush s = putStr s >> hFlush stdout
 

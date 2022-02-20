@@ -52,8 +52,8 @@ addPrefix Hexadecimal = ("0x" ++)
 strToDecimal :: (Integral a) => String -> Maybe a
 strToDecimal s = 
     numberBase s >>= \b ->
-    let numBuilder acc (i,c) = (acc * baseNum b) + (toInteger . digitToInt) c
-    in return . fromIntegral . foldl' numBuilder 0 . zip [0..] $ modify b
+    let numBuilder acc c = (acc * baseNum b) + (toInteger . digitToInt) c
+    in return . fromIntegral . foldl' numBuilder 0 $ modify b
     where modify Decimal = s
           modify _ = drop 2 s
 

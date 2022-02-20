@@ -65,7 +65,7 @@ numToStr x nb =
     let base = baseNum nb
         divSequence = takeWhile (> 0) $ iterate (`div` base) x
         remSequence = map (intToDigit . fromIntegral . (`rem` base)) divSequence
-    in dropWhile (== '0') $ foldl (flip (:)) "" remSequence
+    in dropWhile (== '0') $ reverse remSequence
 
 
 -- Simple helper for printing a string to stdout then flushing the buffer

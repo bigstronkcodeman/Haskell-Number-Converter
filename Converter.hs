@@ -1,6 +1,6 @@
 import System.IO
 import Data.Char (toLower, toUpper, intToDigit, digitToInt)
-import Data.List (foldl', isPrefixOf, intercalate)
+import Data.List (foldl', isPrefixOf)
 import Text.Read (readMaybe)
 
 

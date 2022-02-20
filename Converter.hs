@@ -1,5 +1,5 @@
-import Data.Char (ord, isNumber, toLower, toUpper, intToDigit, digitToInt)
 import System.IO
+import Data.Char (toLower, toUpper, intToDigit, digitToInt)
 import Data.List (foldl', isPrefixOf, intercalate)
 import Text.Read (readMaybe)
 

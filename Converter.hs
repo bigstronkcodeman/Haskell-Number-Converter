@@ -101,7 +101,5 @@ getBase p =
 main = 
     getInputNumber "Enter an integer: " >>= \numIn ->
     getBase "Enter a base to convert to: " >>= \baseOut -> 
-    let result = numToStr numIn baseOut
-        prefixedResult = addPrefix baseOut result
-    in putStrLn ("Converted number: " ++ prefixedResult) >>
-       main
+    (putStrLn . ("Converted number: " ++) . addPrefix baseOut . numToStr numIn) baseOut >>
+    main
